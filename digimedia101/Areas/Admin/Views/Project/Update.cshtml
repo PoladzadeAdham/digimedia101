@@ -1,0 +1,34 @@
+﻿@model ProjectUpdateVm
+
+<form method="post" enctype="multipart/form-data">
+
+    <div class="form-group">
+        <label for="Name"></label>
+        <input asp-for="Name" class="form-control" placeholder="Enter Name">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="Image"></label>
+        <input asp-for="Image" class="form-control" placeholder="Enter Image">
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="CategoryId"></label>
+
+        <select asp-for="CategoryId" class="form-control">
+            @foreach (Category category in ViewBag.Categories)
+            {
+                <option value="@category.Id"> @category.Name</option>
+            }
+
+        </select>
+
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

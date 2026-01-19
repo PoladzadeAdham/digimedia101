@@ -1,0 +1,36 @@
+﻿@model List<ProjectGetVm>
+
+<table class="table">
+    <thead>
+        <a asp-action="Create" class="btn btn-success">Create</a>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Image</th>
+            <th scope="col">CategoryName</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var project in Model)
+        {
+            <tr>
+                <td>@project.Id</td>
+                <td>@project.Name</td>
+                <td>
+                    <img src="~/assets/images/@project.ImagePath" >
+
+                </td>
+                <td>@project.CategoryName</td>
+
+                <td>
+                    <a asp-action="Delete" class="btn btn-danger" asp-route-id="@project.Id" >Delete</a>
+                    <a asp-action="Update" class="btn btn-warning" asp-route-id="@project.Id" >Update</a>
+                </td>
+            </tr>
+
+        }       
+
+
+    </tbody>
+</table>
