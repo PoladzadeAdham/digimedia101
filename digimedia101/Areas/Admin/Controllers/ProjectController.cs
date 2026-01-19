@@ -2,6 +2,7 @@
 using digimedia101.Helpers;
 using digimedia101.Models;
 using digimedia101.ViewModel.ProjectViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NuGet.Protocol;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 namespace digimedia101.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    //[Authorize(Roles = "Admin")]
     public class ProjectController : Controller
     {
         private readonly AppDbContext _context;
