@@ -25,6 +25,8 @@ namespace digimedia101
                 option.Password.RequiredLength = 6;
                 option.Password.RequireDigit = false;
 
+                option.User.RequireUniqueEmail = true;
+
             }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
             var app = builder.Build();
@@ -42,6 +44,7 @@ namespace digimedia101
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(

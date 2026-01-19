@@ -86,6 +86,18 @@
                             <li class="scroll-to-section"><a href="#portfolio">Projects</a></li>
                             <li class="scroll-to-section"><a href="#blog">Blog</a></li>
                             <li class="scroll-to-section"><a href="#contact">Contact</a></li>
+
+                            @if (User.Identity?.IsAuthenticated ?? false)
+                            {
+                                <li class="scroll-to-section"><a href="#">@User.Identity.Name</a></li>
+                                <li class="scroll-to-section"><a asp-action="Logout" asp-controller="Account">Logout</a></li>
+                            }
+                            else
+                            {
+                                <li class="scroll-to-section"><a asp-action="Login" asp-controller="Account">Login</a></li>
+                                <li class="scroll-to-section"><a asp-action="Register" asp-controller="Account">Register</a></li>
+                            }
+
                             <li class="scroll-to-section"><div class="border-first-button"><a href="#contact">Free Quote</a></div></li>
                         </ul>
                         <a class='menu-trigger'>
@@ -98,7 +110,7 @@
         </div>
     </header>
     <!-- ***** Header Area End ***** -->
-            @RenderBody()
+    @RenderBody()
     <footer>
         <div class="container">
             <div class="row">
