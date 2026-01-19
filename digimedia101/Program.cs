@@ -1,3 +1,8 @@
+using digimedia101.Context;
+using digimedia101.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+
 namespace digimedia101
 {
     public class Program
@@ -8,6 +13,19 @@ namespace digimedia101
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<AppDbContext>(option =>
+            {
+                option.UseSqlServer(builder.Configuration.GetConnectionString("Default"));      
+            });
+
+            builder.Services.AddIdentity<AppUser, IdentityRole>(option =>
+            {
+                option.Password.RequireUppercase = false;
+                option.Password.RequiredLength = 6;
+                option.Password.RequireDigit = false;
+
+            }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
             var app = builder.Build();
 
